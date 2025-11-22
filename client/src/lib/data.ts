@@ -43,6 +43,6 @@ export const portfolioData = {
   social: {
     github: "https://github.com/LirielC",
     linkedin: "https://www.linkedin.com/in/lirielcastro/",
-    email: "mailto:contact@liriel.site"
+    email: "mailto:lirielcastror@gmail.com"
   }
 };

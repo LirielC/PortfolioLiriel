@@ -341,7 +341,7 @@ export default function Home() {
                    </div>
                    <div>
                      <p className="font-bold">Email</p>
-                     <p className="text-sm text-muted-foreground">contact@liriel.site</p>
+                     <p className="text-sm text-muted-foreground">lirielcastror@gmail.com</p>
                    </div>
                  </div>
 
