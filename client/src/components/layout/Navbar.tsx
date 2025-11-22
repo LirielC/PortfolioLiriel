@@ -29,7 +29,7 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center text-white">
-        <a href="#" className="text-2xl font-display text-accent hover:text-accent/80 transition-colors">
+        <a href="#" className="text-lg md:text-2xl font-display text-accent hover:text-accent/80 transition-colors">
           LirielC
         </a>
 

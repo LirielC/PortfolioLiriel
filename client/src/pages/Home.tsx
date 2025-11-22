@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { DesktopIcon } from "@/components/os/DesktopIcon";
 import { OSWindow } from "@/components/os/Window";
 import { Taskbar } from "@/components/os/Taskbar";
-import { User, FolderGit2, Music, Github, Trash2, Terminal, Play, Pause, SkipBack, SkipForward, Volume2, ExternalLink, Star, Mail, Linkedin, Folder } from "lucide-react";
+import { User, FolderGit2, Music, Github, Terminal, Play, Pause, SkipBack, SkipForward, Volume2, ExternalLink, Star, Mail, Linkedin, Folder } from "lucide-react";
 import wallpaper from "@assets/generated_images/linux_mint_abstract_wallpaper.png";
 import albumCover from "@assets/The_Life_of_a_Showgirl_1763834019425.png";
 import { portfolioData } from "@/lib/data";
@@ -199,13 +199,7 @@ export default function Home() {
           color="text-yellow-500"
         />
 
-        <DesktopIcon 
-          icon={Trash2} 
-          label="Trash" 
-          onClick={() => {}} 
-          className="mt-auto row-start-[8]"
-          color="text-zinc-400"
-        />
+        {/* Trash icon removed for mobile/cleaner UI */}
 
         {/* Windows Layer */}
         {/* About Window */}
