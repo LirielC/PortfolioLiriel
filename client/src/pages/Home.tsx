@@ -237,7 +237,6 @@ export default function Home() {
                    <div key={skill.name} className="bg-card p-3 rounded border border-border/50 flex items-center gap-3">
                      <skill.icon size={20} className="text-primary" />
                      <span>{skill.name}</span>
-                     <span className="ml-auto text-xs bg-secondary px-2 py-1 rounded">{skill.level}%</span>
                    </div>
                  ))}
                </div>

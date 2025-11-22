@@ -1,16 +1,16 @@
-import { Code, Database, Layout, Server, Smartphone, Terminal } from "lucide-react";
+import { Code, Database, Server, Terminal, FileJson, GitBranch, Coffee, Zap } from "lucide-react";
 
 export const portfolioData = {
   name: "Liriel Castro",
-  title: "Full Stack Developer",
-  about: "Olá! Sou uma desenvolvedora apaixonada por criar experiências web incríveis. Com foco em performance e design clean, transformo ideias em realidade digital. Adoro resolver problemas complexos e aprender novas tecnologias.",
+  title: "Back-End Developer",
+  about: "Sou uma desenvolvedora back-end apaixonada por arquitetura de sistemas robustos e escaláveis. Especializada em construir APIs performáticas, gerenciar bancos de dados complexos e implementar soluções backend inovadoras. Adoro resolver desafios técnicos e otimizar processos com tecnologias modernas.",
   skills: [
-    { name: "React", level: 90, icon: Layout },
-    { name: "Node.js", level: 85, icon: Server },
+    { name: "Java", level: 90, icon: Coffee },
+    { name: "Spring Boot", level: 90, icon: Server },
+    { name: "Node.js", level: 85, icon: Zap },
+    { name: "PostgreSQL", level: 85, icon: Database },
     { name: "TypeScript", level: 80, icon: Code },
-    { name: "Tailwind CSS", level: 95, icon: Smartphone },
-    { name: "PostgreSQL", level: 75, icon: Database },
-    { name: "Git", level: 85, icon: Terminal },
+    { name: "Git", level: 90, icon: GitBranch },
   ],
   projects: [
     {
