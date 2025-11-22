@@ -15,27 +15,27 @@ export const portfolioData = {
   projects: [
     {
       id: 1,
-      title: "Sistema de Biblioteca",
-      description: "Sistema completo para gerenciamento de acervo, empréstimos e usuários.",
-      tech: ["Java", "Spring Boot", "PostgreSQL"],
+      title: "SistemaGerenciamentoBiblioteca",
+      description: "Sistema completo de gerenciamento de biblioteca com vendas, empréstimos e controle de clientes. Migrado para Java 17 + Spring Boot 3.2 + Vaadin.",
+      tech: ["Java", "Spring Boot", "Vaadin", "PostgreSQL"],
       image: "https://images.unsplash.com/photo-1507842217153-e5992bd0d1ce?q=80&w=1000&auto=format&fit=crop",
-      link: "#"
+      link: "https://github.com/LirielC/SistemaGerenciamentoBiblioteca"
     },
     {
       id: 2,
-      title: "E-commerce Dashboard",
-      description: "Painel administrativo para gestão de vendas e estoque com gráficos em tempo real.",
-      tech: ["React", "Tailwind", "Recharts"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
-      link: "#"
+      title: "ExitPlan",
+      description: "Planejador de saídas e rotas inteligente com sugestões personalizadas e mapas interativos.",
+      tech: ["React", "Node.js", "MongoDB"],
+      image: "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop",
+      link: "https://github.com/LirielC/ExitPlan"
     },
     {
       id: 3,
-      title: "Task Manager App",
-      description: "Aplicação de produtividade para gerenciamento de tarefas pessoais e de equipe.",
-      tech: ["Vue.js", "Firebase", "Vuex"],
-      image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=1000&auto=format&fit=crop",
-      link: "#"
+      title: "ProCurriculum",
+      description: "Gerador de currículos profissionais com exportação em PDF. Interface moderna e intuitiva.",
+      tech: ["HTML5", "CSS3", "JavaScript"],
+      image: "https://images.unsplash.com/photo-1516321318423-f06f70e504f9?q=80&w=1000&auto=format&fit=crop",
+      link: "https://github.com/LirielC/-ProCurriculum-.github.io"
     }
   ],
   social: {
