@@ -3,7 +3,7 @@ import { Code, Database, Server, Terminal, FileJson, GitBranch, Coffee, Zap } fr
 export const portfolioData = {
   name: "Liriel Castro",
   title: "Back-End Developer",
-  about: "Sou uma desenvolvedora back-end apaixonada por arquitetura de sistemas robustos e escaláveis. Especializada em construir APIs performáticas, gerenciar bancos de dados complexos e implementar soluções backend inovadoras. Adoro resolver desafios técnicos e otimizar processos com tecnologias modernas.",
+  about: "Estudante de Ciência da Computação pela Universidade do Estado do Rio de Janeiro. Apaixonada por criar soluções digitais que unem funcionalidade e design elegante. Busco oportunidades para crescer como desenvolvedora e contribuir para projetos inovadores.",
   skills: [
     { name: "Java", level: 90, icon: Coffee },
     { name: "Spring Boot", level: 90, icon: Server },
