@@ -2,11 +2,10 @@ import { useState } from "react";
 import { DesktopIcon } from "@/components/os/DesktopIcon";
 import { OSWindow } from "@/components/os/Window";
 import { Taskbar } from "@/components/os/Taskbar";
-import { User, FolderGit2, Music, Github, Trash2, HardDrive, Globe, Terminal, Play, SkipBack, SkipForward, Pause } from "lucide-react";
+import { User, FolderGit2, Music, Github, Trash2, Play, Pause } from "lucide-react";
 import wallpaper from "@assets/generated_images/linux_mint_abstract_wallpaper.png";
+import albumCover from "@assets/generated_images/taylor_swift_life_of_a_showgirl_album_cover.png";
 import { portfolioData } from "@/lib/data";
-import { About } from "@/components/sections/About";
-import { Projects } from "@/components/sections/Projects";
 
 export default function Home() {
   const [openWindows, setOpenWindows] = useState<string[]>([]);
@@ -29,6 +28,10 @@ export default function Home() {
 
   const openGithub = () => {
     window.open(portfolioData.social.github, "_blank");
+  };
+
+  const openSpotifyLink = () => {
+     window.open("https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02", "_blank");
   };
 
   return (
@@ -182,17 +185,17 @@ export default function Home() {
             {/* Spotify Header */}
             <div className="p-6 flex items-end gap-6 bg-gradient-to-b from-transparent to-black/20">
                <img 
-                 src="https://upload.wikimedia.org/wikipedia/en/4/47/Taylor_Swift_-_Red_%28Taylor%27s_Version%29.png" 
-                 alt="Red (Taylor's Version)" 
-                 className="w-52 h-52 shadow-[0_8px_40px_rgba(0,0,0,0.5)]"
+                 src={albumCover} 
+                 alt="The Life of a Showgirl" 
+                 className="w-52 h-52 shadow-[0_8px_40px_rgba(0,0,0,0.5)] object-cover"
                />
                <div className="mb-2">
                  <p className="uppercase text-xs font-bold tracking-wider mb-2">Album</p>
-                 <h1 className="text-7xl font-black mb-6 tracking-tighter">Red (Taylor's Version)</h1>
+                 <h1 className="text-7xl font-black mb-6 tracking-tighter">The Life of a Showgirl</h1>
                  <div className="flex items-center gap-2 text-sm font-medium">
                    <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-black text-[10px] font-bold">T</div>
-                   <span className="hover:underline cursor-pointer">Taylor Swift</span>
-                   <span className="text-gray-400">• 2021 • 30 songs, 2 hr 10 min</span>
+                   <span className="hover:underline cursor-pointer" onClick={openSpotifyLink}>Taylor Swift</span>
+                   <span className="text-gray-400">• 2024 • 13 songs, 55 min</span>
                  </div>
                </div>
             </div>
@@ -221,16 +224,16 @@ export default function Home() {
                 </thead>
                 <tbody>
                   {[
-                    "State of Grace (Taylor's Version)",
-                    "Red (Taylor's Version)",
-                    "Treacherous (Taylor's Version)",
-                    "I Knew You Were Trouble (Taylor's Version)",
-                    "All Too Well (10 Minute Version)",
-                    "22 (Taylor's Version)",
-                    "I Almost Do (Taylor's Version)",
-                    "We Are Never Ever Getting Back Together",
-                    "Stay Stay Stay (Taylor's Version)",
-                    "The Last Time (feat. Gary Lightbody)"
+                    "Opening Act",
+                    "The Life of a Showgirl",
+                    "Glitter & Gold",
+                    "Backstage Secrets",
+                    "Curtain Call",
+                    "Spotlight (Taylor's Version)",
+                    "Midnight in Paris",
+                    "Encore",
+                    "The Final Bow",
+                    "Applause"
                   ].map((song, i) => (
                     <tr key={i} className="group hover:bg-white/10 transition-colors rounded cursor-pointer" onClick={() => setIsPlaying(true)}>
                       <td className="py-3 text-center group-hover:text-white">
