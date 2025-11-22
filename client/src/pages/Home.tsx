@@ -171,69 +171,37 @@ export default function Home() {
           isActive={activeWindow === "spotify"}
           onFocus={() => setActiveWindow("spotify")}
           icon={<Music size={16} />}
-          defaultX={window.innerWidth - 340}
-          defaultY={window.innerHeight - 450}
+          defaultX={window.innerWidth - 320}
+          defaultY={window.innerHeight - 380}
           defaultWidth={300}
-          defaultHeight={380}
-          className="bg-[#121212] text-white overflow-hidden"
+          defaultHeight={300}
+          className="bg-[#121212] text-white overflow-hidden border-none shadow-2xl"
         >
-          <div className="h-full flex flex-col bg-gradient-to-b from-[#2a2a2a] to-[#121212] p-4">
-            <div className="flex-1 flex flex-col items-center justify-center gap-4">
-              <div className="relative group cursor-pointer" onClick={() => window.open("https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02", "_blank")}>
-                <img 
-                  src={albumCover} 
-                  alt="Album Cover" 
-                  className="w-48 h-48 rounded-md shadow-xl hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="bg-black/50 rounded-full p-3 backdrop-blur-sm">
-                    <Play size={24} fill="white" />
-                  </div>
-                </div>
-              </div>
+          <div className="h-full w-full relative group">
+            <img 
+              src={albumCover} 
+              alt="The Life of a Showgirl" 
+              className="w-full h-full object-cover"
+            />
+            
+            {/* Overlay with Info */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 className="font-bold text-lg leading-tight truncate text-white">The Life of a Showgirl</h3>
+              <p className="text-sm text-gray-300">Taylor Swift</p>
               
-              <div className="text-center w-full">
-                <h3 className="font-bold text-lg leading-tight truncate">The Life of a Showgirl</h3>
-                <p className="text-sm text-gray-400 hover:underline cursor-pointer" onClick={() => window.open("https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02", "_blank")}>
-                  Taylor Swift
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-4 space-y-4">
-              {/* Progress Bar */}
-              <div className="w-full bg-white/10 rounded-full h-1 cursor-pointer group">
-                <div className="bg-green-500 h-1 rounded-full w-1/3 group-hover:bg-green-400 relative">
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 group-hover:opacity-100 shadow-sm"></div>
-                </div>
-              </div>
-              
-              <div className="flex justify-between text-[10px] text-gray-400 font-mono px-1">
-                <span>1:13</span>
-                <span>3:45</span>
-              </div>
-
-              {/* Controls */}
-              <div className="flex items-center justify-center gap-4">
-                <button className="text-gray-400 hover:text-white transition-colors">
-                  <SkipBack size={20} fill="currentColor" />
-                </button>
+              <div className="flex items-center gap-4 mt-3">
                 <button 
-                  className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-black hover:scale-105 transition-transform active:scale-95"
-                  onClick={() => setIsPlaying(!isPlaying)}
+                  className="w-10 h-10 bg-[#1ed760] rounded-full flex items-center justify-center text-black hover:scale-105 transition-transform shadow-lg"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsPlaying(!isPlaying);
+                  }}
                 >
                   {isPlaying ? <Pause size={20} fill="black" /> : <Play size={20} fill="black" className="ml-1" />}
                 </button>
-                <button className="text-gray-400 hover:text-white transition-colors">
-                  <SkipForward size={20} fill="currentColor" />
-                </button>
-              </div>
-
-              <div className="flex items-center justify-end gap-2 pt-2">
-                 <Volume2 size={14} className="text-gray-400" />
-                 <div className="w-20 h-1 bg-white/20 rounded-full cursor-pointer">
-                   <div className="w-2/3 h-full bg-gray-400 hover:bg-green-500 rounded-full"></div>
-                 </div>
+                <div className="flex-1 h-1 bg-gray-600 rounded-full overflow-hidden">
+                  <div className="h-full bg-white w-1/3"></div>
+                </div>
               </div>
             </div>
           </div>
