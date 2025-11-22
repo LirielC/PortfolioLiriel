@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { DesktopIcon } from "@/components/os/DesktopIcon";
 import { OSWindow } from "@/components/os/Window";
 import { Taskbar } from "@/components/os/Taskbar";
-import { User, FolderGit2, Music, Github, Trash2, Terminal, Play, Pause, SkipBack, SkipForward, Volume2, ExternalLink, Star } from "lucide-react";
+import { User, FolderGit2, Music, Github, Trash2, Terminal, Play, Pause, SkipBack, SkipForward, Volume2, ExternalLink, Star, Mail, Linkedin, Folder } from "lucide-react";
 import wallpaper from "@assets/generated_images/linux_mint_abstract_wallpaper.png";
 import albumCover from "@assets/The_Life_of_a_Showgirl_1763834019425.png";
 import { portfolioData } from "@/lib/data";
@@ -193,6 +193,13 @@ export default function Home() {
         />
 
         <DesktopIcon 
+          icon={Folder} 
+          label="Contact" 
+          onClick={() => handleOpenWindow("contact")} 
+          color="text-yellow-500"
+        />
+
+        <DesktopIcon 
           icon={Trash2} 
           label="Trash" 
           onClick={() => {}} 
@@ -295,6 +302,69 @@ export default function Home() {
             )}
             <div className="mt-4 animate-pulse">
               <span className="text-blue-400">user@mint</span>:<span className="text-blue-200">~/projects</span>$ <span className="inline-block w-2 h-4 bg-green-500 align-middle"></span>
+            </div>
+          </div>
+        </OSWindow>
+
+        {/* Contact Window */}
+        <OSWindow
+          title="Contact - File Manager"
+          isOpen={openWindows.includes("contact")}
+          onClose={() => handleCloseWindow("contact")}
+          isActive={activeWindow === "contact"}
+          onFocus={() => setActiveWindow("contact")}
+          icon={<Folder size={16} />}
+          defaultX={250}
+          defaultY={150}
+        >
+          <div className="h-full bg-background text-foreground p-0 flex flex-col">
+            <div className="bg-card border-b border-border p-2 flex gap-2 text-sm">
+               <button className="px-3 py-1 bg-secondary/50 rounded hover:bg-secondary transition-colors">Home</button>
+               <button className="px-3 py-1 bg-secondary/50 rounded hover:bg-secondary transition-colors">Documents</button>
+               <span className="text-muted-foreground py-1">/</span>
+               <span className="py-1 font-bold">Contact</span>
+            </div>
+            <div className="p-8 overflow-y-auto">
+               <div className="mb-8">
+                 <h1 className="text-3xl font-bold mb-6">Entre em Contato</h1>
+                 <p className="text-muted-foreground mb-8">Veja minhas informações de contato abaixo. Ficarei feliz em ouvir de você!</p>
+               </div>
+
+               <div className="space-y-4">
+                 {/* Email */}
+                 <div 
+                   className="bg-card p-4 rounded border border-border/50 flex items-center gap-4 hover:bg-secondary/30 transition-colors cursor-pointer group"
+                   onClick={() => window.location.href = portfolioData.social.email}
+                 >
+                   <div className="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center group-hover:bg-red-500/30 transition-colors">
+                     <Mail size={24} className="text-red-500" />
+                   </div>
+                   <div>
+                     <p className="font-bold">Email</p>
+                     <p className="text-sm text-muted-foreground">contact@liriel.site</p>
+                   </div>
+                 </div>
+
+                 {/* LinkedIn */}
+                 <div 
+                   className="bg-card p-4 rounded border border-border/50 flex items-center gap-4 hover:bg-secondary/30 transition-colors cursor-pointer group"
+                   onClick={() => window.open(portfolioData.social.linkedin, "_blank")}
+                 >
+                   <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
+                     <Linkedin size={24} className="text-blue-500" />
+                   </div>
+                   <div>
+                     <p className="font-bold">LinkedIn</p>
+                     <p className="text-sm text-muted-foreground">Liriel Castro</p>
+                   </div>
+                 </div>
+               </div>
+
+               <div className="mt-8 p-4 bg-secondary/20 rounded border border-border/50">
+                 <p className="text-sm text-muted-foreground">
+                   💼 Sou uma desenvolvedora back-end em busca de novas oportunidades. Estou aberta a colaborações e projetos interessantes. Fique à vontade para entrar em contato!
+                 </p>
+               </div>
             </div>
           </div>
         </OSWindow>
