@@ -28,7 +28,7 @@ export function Taskbar({ openWindows, activeWindow, onWindowClick, onStartClick
             className="flex items-center gap-2 px-3 py-1.5 rounded hover:bg-white/10 transition-colors text-white font-bold group"
           >
             <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-secondary shadow-[0_0_10px_rgba(135,207,62,0.4)] group-hover:shadow-[0_0_15px_rgba(135,207,62,0.6)] transition-shadow">
-              <span className="text-xs font-black tracking-tighter">LM</span>
+              <span className="text-xs font-black tracking-tighter">LC</span>
             </div>
             <span className="text-sm tracking-wide hidden md:block">Menu</span>
           </button>
