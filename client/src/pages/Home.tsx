@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DesktopIcon } from "@/components/os/DesktopIcon";
 import { OSWindow } from "@/components/os/Window";
 import { Taskbar } from "@/components/os/Taskbar";
-import { User, FolderGit2, Music, Github, Trash2, Terminal, Play, Pause, SkipBack, SkipForward, Volume2 } from "lucide-react";
+import { User, FolderGit2, Music, Github, Trash2, Terminal, Play, Pause, SkipBack, SkipForward, Volume2, ExternalLink, Star } from "lucide-react";
 import wallpaper from "@assets/generated_images/linux_mint_abstract_wallpaper.png";
 import albumCover from "@assets/The_Life_of_a_Showgirl_1763834019425.png";
 import { portfolioData } from "@/lib/data";
+
+interface GitHubRepo {
+  id: number;
+  name: string;
+  description: string;
+  url: string;
+  language: string;
+  stars: number;
+}
 
 // Custom Icons for UI Match
 const ShuffleIcon = ({ size = 20 }: { size?: number }) => (
@@ -91,6 +100,35 @@ export default function Home() {
   const [openWindows, setOpenWindows] = useState<string[]>([]);
   const [activeWindow, setActiveWindow] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [gitHubRepos, setGitHubRepos] = useState<GitHubRepo[]>([]);
+  const [loadingRepos, setLoadingRepos] = useState(false);
+
+  useEffect(() => {
+    const fetchGitHubRepos = async () => {
+      setLoadingRepos(true);
+      try {
+        const response = await fetch("https://api.github.com/users/LirielC/repos?sort=stars&per_page=20");
+        const data = await response.json();
+        const repos: GitHubRepo[] = data
+          .filter((repo: any) => !repo.fork)
+          .slice(0, 12)
+          .map((repo: any) => ({
+            id: repo.id,
+            name: repo.name,
+            description: repo.description || "Sem descrição",
+            url: repo.html_url,
+            language: repo.language || "Sem linguagem",
+            stars: repo.stargazers_count,
+          }));
+        setGitHubRepos(repos);
+      } catch (error) {
+        console.error("Erro ao buscar repos do GitHub:", error);
+      }
+      setLoadingRepos(false);
+    };
+
+    fetchGitHubRepos();
+  }, []);
 
   const handleOpenWindow = (id: string) => {
     if (!openWindows.includes(id)) {
@@ -209,38 +247,53 @@ export default function Home() {
 
         {/* Projects Window */}
         <OSWindow
-          title="~/Projects - Terminal"
+          title="~/Projetos - Terminal"
           isOpen={openWindows.includes("projects")}
           onClose={() => handleCloseWindow("projects")}
           isActive={activeWindow === "projects"}
           onFocus={() => setActiveWindow("projects")}
-          icon={<Terminal size={16} />}
+          icon={<FolderGit2 size={16} />}
           defaultX={150}
           defaultY={100}
           className="bg-[#1e1e1e] text-gray-200 font-mono"
         >
           <div className="h-full p-4 overflow-y-auto bg-[#1e1e1e] text-green-400 font-mono selection:bg-green-900">
             <div className="mb-4">
-              <span className="text-blue-400">user@mint</span>:<span className="text-blue-200">~/projects</span>$ ls -la
+              <span className="text-blue-400">user@mint</span>:<span className="text-blue-200">~/projects</span>$ git repos
             </div>
-            <div className="grid grid-cols-1 gap-6">
-              {portfolioData.projects.map((project) => (
-                <div key={project.id} className="border border-green-900/50 bg-green-900/10 p-4 rounded hover:bg-green-900/20 transition-colors">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-green-500 font-bold">./{project.title.toLowerCase().replace(/\s+/g, '-')}</span>
-                    <span className="text-xs text-gray-500 ml-auto">-rw-r--r--</span>
-                  </div>
-                  <p className="text-gray-400 text-sm mb-3 pl-4 border-l-2 border-green-900/30">{project.description}</p>
-                  <div className="flex gap-2 pl-4">
-                    {project.tech.map(t => (
-                      <span key={t} className="text-xs bg-green-900/30 text-green-300 px-2 py-0.5 rounded">
-                        {t}
+            {loadingRepos ? (
+              <div className="text-yellow-400">Carregando projetos do GitHub...</div>
+            ) : gitHubRepos.length > 0 ? (
+              <div className="grid grid-cols-1 gap-4">
+                {gitHubRepos.map((repo) => (
+                  <div 
+                    key={repo.id} 
+                    className="border border-green-900/50 bg-green-900/10 p-4 rounded hover:bg-green-900/20 transition-colors cursor-pointer group"
+                    onClick={() => window.open(repo.url, "_blank")}
+                  >
+                    <div className="flex items-center gap-2 mb-2 justify-between">
+                      <span className="text-green-500 font-bold">./{repo.name}</span>
+                      <div className="flex items-center gap-2 text-xs text-gray-500">
+                        {repo.stars > 0 && (
+                          <span className="flex items-center gap-1 text-yellow-500">
+                            <Star size={12} fill="currentColor" /> {repo.stars}
+                          </span>
+                        )}
+                        <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-sm mb-3 pl-4 border-l-2 border-green-900/30">{repo.description}</p>
+                    <div className="flex gap-2 pl-4">
+                      <span className="text-xs bg-green-900/30 text-green-300 px-2 py-0.5 rounded">
+                        {repo.language}
                       </span>
-                    ))}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-red-400">Nenhum repositório encontrado</div>
+            )}
             <div className="mt-4 animate-pulse">
               <span className="text-blue-400">user@mint</span>:<span className="text-blue-200">~/projects</span>$ <span className="inline-block w-2 h-4 bg-green-500 align-middle"></span>
             </div>
