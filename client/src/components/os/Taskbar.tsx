@@ -46,7 +46,7 @@ export function Taskbar({ openWindows, activeWindow, onWindowClick, onStartClick
                 <span className="text-sm">LinkedIn</span>
               </a>
               <a
-                href="mailto:contact@liriel.site"
+                href="mailto:lirielcastror@gmail.com"
                 className="flex items-center gap-3 px-4 py-2 hover:bg-white/10 transition-colors text-white border-b border-white/5"
               >
                 <Mail size={16} className="text-red-500" />

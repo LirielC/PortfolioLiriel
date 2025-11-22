@@ -550,12 +550,7 @@ export default function Home() {
         openWindows={openWindows} 
         activeWindow={activeWindow} 
         onWindowClick={(id) => {
-          if (activeWindow === id) {
-            // minimize logic could go here, for now just focus
-            setActiveWindow(id);
-          } else {
-            setActiveWindow(id);
-          }
+          handleOpenWindow(id);
         }}
         onStartClick={() => {
            // Toggle Start Menu logic
