@@ -2,20 +2,17 @@ import { useState } from "react";
 import { DesktopIcon } from "@/components/os/DesktopIcon";
 import { OSWindow } from "@/components/os/Window";
 import { Taskbar } from "@/components/os/Taskbar";
-import { User, FolderGit2, Music, Github, Trash2, Terminal } from "lucide-react";
+import { User, FolderGit2, Music, Github, Trash2, Terminal, Play, Pause, SkipBack, SkipForward, Volume2 } from "lucide-react";
 import wallpaper from "@assets/generated_images/linux_mint_abstract_wallpaper.png";
+import albumCover from "@assets/generated_images/taylor_swift_life_of_a_showgirl_album_cover.png";
 import { portfolioData } from "@/lib/data";
 
 export default function Home() {
   const [openWindows, setOpenWindows] = useState<string[]>([]);
   const [activeWindow, setActiveWindow] = useState<string | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleOpenWindow = (id: string) => {
-    if (id === "spotify") {
-      window.open("https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02", "_blank");
-      return;
-    }
-    
     if (!openWindows.includes(id)) {
       setOpenWindows([...openWindows, id]);
     }
@@ -162,6 +159,82 @@ export default function Home() {
             </div>
             <div className="mt-4 animate-pulse">
               <span className="text-blue-400">user@mint</span>:<span className="text-blue-200">~/projects</span>$ <span className="inline-block w-2 h-4 bg-green-500 align-middle"></span>
+            </div>
+          </div>
+        </OSWindow>
+
+        {/* Spotify Mini Player Window */}
+        <OSWindow
+          title="Spotify"
+          isOpen={openWindows.includes("spotify")}
+          onClose={() => handleCloseWindow("spotify")}
+          isActive={activeWindow === "spotify"}
+          onFocus={() => setActiveWindow("spotify")}
+          icon={<Music size={16} />}
+          defaultX={window.innerWidth - 340}
+          defaultY={window.innerHeight - 450}
+          defaultWidth={300}
+          defaultHeight={380}
+          className="bg-[#121212] text-white overflow-hidden"
+        >
+          <div className="h-full flex flex-col bg-gradient-to-b from-[#2a2a2a] to-[#121212] p-4">
+            <div className="flex-1 flex flex-col items-center justify-center gap-4">
+              <div className="relative group cursor-pointer" onClick={() => window.open("https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02", "_blank")}>
+                <img 
+                  src={albumCover} 
+                  alt="Album Cover" 
+                  className="w-48 h-48 rounded-md shadow-xl hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="bg-black/50 rounded-full p-3 backdrop-blur-sm">
+                    <Play size={24} fill="white" />
+                  </div>
+                </div>
+              </div>
+              
+              <div className="text-center w-full">
+                <h3 className="font-bold text-lg leading-tight truncate">The Life of a Showgirl</h3>
+                <p className="text-sm text-gray-400 hover:underline cursor-pointer" onClick={() => window.open("https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02", "_blank")}>
+                  Taylor Swift
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-4 space-y-4">
+              {/* Progress Bar */}
+              <div className="w-full bg-white/10 rounded-full h-1 cursor-pointer group">
+                <div className="bg-green-500 h-1 rounded-full w-1/3 group-hover:bg-green-400 relative">
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 group-hover:opacity-100 shadow-sm"></div>
+                </div>
+              </div>
+              
+              <div className="flex justify-between text-[10px] text-gray-400 font-mono px-1">
+                <span>1:13</span>
+                <span>3:45</span>
+              </div>
+
+              {/* Controls */}
+              <div className="flex items-center justify-center gap-4">
+                <button className="text-gray-400 hover:text-white transition-colors">
+                  <SkipBack size={20} fill="currentColor" />
+                </button>
+                <button 
+                  className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-black hover:scale-105 transition-transform active:scale-95"
+                  onClick={() => setIsPlaying(!isPlaying)}
+                >
+                  {isPlaying ? <Pause size={20} fill="black" /> : <Play size={20} fill="black" className="ml-1" />}
+                </button>
+                <button className="text-gray-400 hover:text-white transition-colors">
+                  <SkipForward size={20} fill="currentColor" />
+                </button>
+              </div>
+
+              <div className="flex items-center justify-end gap-2 pt-2">
+                 <Volume2 size={14} className="text-gray-400" />
+                 <div className="w-20 h-1 bg-white/20 rounded-full cursor-pointer">
+                   <div className="w-2/3 h-full bg-gray-400 hover:bg-green-500 rounded-full"></div>
+                 </div>
+              </div>
             </div>
           </div>
         </OSWindow>
