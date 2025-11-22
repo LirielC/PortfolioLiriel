@@ -103,6 +103,10 @@ export default function Home() {
     window.open(portfolioData.social.github, "_blank");
   };
 
+  const openSpotifyLink = () => {
+     window.open("https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02", "_blank");
+  };
+
   return (
     <div 
       className="h-screen w-screen overflow-hidden flex flex-col font-sans selection:bg-primary selection:text-white relative"
