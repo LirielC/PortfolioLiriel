@@ -7,8 +7,10 @@ export const portfolioData = {
   skills: [
     { name: "Java", level: 90, icon: Coffee },
     { name: "Spring Boot", level: 90, icon: Server },
+    { name: "Python", level: 85, icon: Code },
     { name: "Node.js", level: 85, icon: Zap },
     { name: "PostgreSQL", level: 85, icon: Database },
+    { name: "SQL", level: 90, icon: Database },
     { name: "TypeScript", level: 80, icon: Code },
     { name: "Git", level: 90, icon: GitBranch },
   ],
