@@ -331,12 +331,12 @@ export default function Home() {
                     { title: "Father Figure", length: "3:32", explicit: true },
                     { title: "Eldest Daughter", length: "4:06", explicit: true },
                     { title: "Ruin The Friendship", length: "3:40", explicit: false },
-                    { title: "Showgirl's Lament", length: "4:12", explicit: false },
-                    { title: "Golden Cage", length: "3:15", explicit: false },
-                    { title: "Spotlight Burn", length: "3:58", explicit: true },
-                    { title: "Curtain Call", length: "4:01", explicit: false },
-                    { title: "Encore (Piano Version)", length: "3:45", explicit: false },
-                    { title: "The Final Bow", length: "4:20", explicit: false },
+                    { title: "Actually Romantic", length: "2:43", explicit: true },
+                    { title: "Wish List", length: "3:27", explicit: true },
+                    { title: "Wood", length: "2:30", explicit: true },
+                    { title: "CANCELLED!", length: "3:31", explicit: true },
+                    { title: "Honey", length: "3:01", explicit: true },
+                    { title: "The Life of a Showgirl (feat. Sabrina Carpenter)", length: "4:01", explicit: true },
                   ].map((song, i) => (
                     <div 
                       key={i} 
