@@ -4,7 +4,7 @@ import { OSWindow } from "@/components/os/Window";
 import { Taskbar } from "@/components/os/Taskbar";
 import { User, FolderGit2, Music, Github, Trash2, Terminal, Play, Pause, SkipBack, SkipForward, Volume2 } from "lucide-react";
 import wallpaper from "@assets/generated_images/linux_mint_abstract_wallpaper.png";
-import albumCover from "@assets/generated_images/taylor_swift_life_of_a_showgirl_album_cover_green_water.png";
+import albumCover from "@assets/The_Life_of_a_Showgirl_1763834019425.png";
 import { portfolioData } from "@/lib/data";
 
 // Custom Icons for UI Match
