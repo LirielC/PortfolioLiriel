@@ -2,17 +2,20 @@ import { useState } from "react";
 import { DesktopIcon } from "@/components/os/DesktopIcon";
 import { OSWindow } from "@/components/os/Window";
 import { Taskbar } from "@/components/os/Taskbar";
-import { User, FolderGit2, Music, Github, Trash2, Play, Pause } from "lucide-react";
+import { User, FolderGit2, Music, Github, Trash2, Terminal } from "lucide-react";
 import wallpaper from "@assets/generated_images/linux_mint_abstract_wallpaper.png";
-import albumCover from "@assets/generated_images/taylor_swift_life_of_a_showgirl_album_cover.png";
 import { portfolioData } from "@/lib/data";
 
 export default function Home() {
   const [openWindows, setOpenWindows] = useState<string[]>([]);
   const [activeWindow, setActiveWindow] = useState<string | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleOpenWindow = (id: string) => {
+    if (id === "spotify") {
+      window.open("https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02", "_blank");
+      return;
+    }
+    
     if (!openWindows.includes(id)) {
       setOpenWindows([...openWindows, id]);
     }
@@ -28,10 +31,6 @@ export default function Home() {
 
   const openGithub = () => {
     window.open(portfolioData.social.github, "_blank");
-  };
-
-  const openSpotifyLink = () => {
-     window.open("https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02", "_blank");
   };
 
   return (
@@ -166,95 +165,6 @@ export default function Home() {
             </div>
           </div>
         </OSWindow>
-
-        {/* Spotify Window */}
-        <OSWindow
-          title="Spotify Premium"
-          isOpen={openWindows.includes("spotify")}
-          onClose={() => handleCloseWindow("spotify")}
-          isActive={activeWindow === "spotify"}
-          onFocus={() => setActiveWindow("spotify")}
-          icon={<Music size={16} />}
-          defaultX={200}
-          defaultY={150}
-          defaultWidth={900}
-          defaultHeight={600}
-          className="bg-[#121212] text-white"
-        >
-          <div className="h-full flex flex-col bg-gradient-to-b from-[#2a2a2a] to-[#121212]">
-            {/* Spotify Header */}
-            <div className="p-6 flex items-end gap-6 bg-gradient-to-b from-transparent to-black/20">
-               <img 
-                 src={albumCover} 
-                 alt="The Life of a Showgirl" 
-                 className="w-52 h-52 shadow-[0_8px_40px_rgba(0,0,0,0.5)] object-cover"
-               />
-               <div className="mb-2">
-                 <p className="uppercase text-xs font-bold tracking-wider mb-2">Album</p>
-                 <h1 className="text-7xl font-black mb-6 tracking-tighter">The Life of a Showgirl</h1>
-                 <div className="flex items-center gap-2 text-sm font-medium">
-                   <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-black text-[10px] font-bold">T</div>
-                   <span className="hover:underline cursor-pointer" onClick={openSpotifyLink}>Taylor Swift</span>
-                   <span className="text-gray-400">• 2024 • 13 songs, 55 min</span>
-                 </div>
-               </div>
-            </div>
-
-            {/* Spotify Controls */}
-            <div className="px-6 py-4 bg-black/20 flex items-center gap-8">
-              <button 
-                className="w-14 h-14 rounded-full bg-[#1ed760] text-black flex items-center justify-center hover:scale-105 transition-transform shadow-lg"
-                onClick={() => setIsPlaying(!isPlaying)}
-              >
-                {isPlaying ? <Pause size={28} fill="black" /> : <Play size={28} fill="black" className="ml-1" />}
-              </button>
-              <button className="text-gray-400 hover:text-white"><span className="text-3xl font-light">♡</span></button>
-              <button className="text-gray-400 hover:text-white">•••</button>
-            </div>
-
-            {/* Song List */}
-            <div className="flex-1 overflow-y-auto px-6 pb-6">
-              <table className="w-full text-sm text-gray-400 border-collapse">
-                <thead className="text-xs uppercase tracking-wider border-b border-white/10 text-left">
-                  <tr>
-                    <th className="pb-2 w-12 font-light text-center">#</th>
-                    <th className="pb-2 font-light">Title</th>
-                    <th className="pb-2 font-light text-right w-16"><ClockIcon /></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    "Opening Act",
-                    "The Life of a Showgirl",
-                    "Glitter & Gold",
-                    "Backstage Secrets",
-                    "Curtain Call",
-                    "Spotlight (Taylor's Version)",
-                    "Midnight in Paris",
-                    "Encore",
-                    "The Final Bow",
-                    "Applause"
-                  ].map((song, i) => (
-                    <tr key={i} className="group hover:bg-white/10 transition-colors rounded cursor-pointer" onClick={() => setIsPlaying(true)}>
-                      <td className="py-3 text-center group-hover:text-white">
-                         <span className="group-hover:hidden">{i + 1}</span>
-                         <Play size={12} className="hidden group-hover:inline-block ml-1 fill-white text-white" />
-                      </td>
-                      <td className="py-3">
-                        <div className="text-white font-medium group-hover:text-[#1ed760] transition-colors">{song}</div>
-                        <div className="text-xs group-hover:text-white/70">Taylor Swift</div>
-                      </td>
-                      <td className="py-3 text-right font-mono group-hover:text-white">
-                        {Math.floor(Math.random() * 3) + 3}:{Math.floor(Math.random() * 50 + 10)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </OSWindow>
-
       </div>
 
       {/* Taskbar */}
@@ -274,14 +184,5 @@ export default function Home() {
         }}
       />
     </div>
-  );
-}
-
-function ClockIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
-    </svg>
   );
 }
