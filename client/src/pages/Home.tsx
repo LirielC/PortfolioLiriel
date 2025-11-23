@@ -385,66 +385,66 @@ export default function Home() {
         >
           <div className="h-full flex flex-col bg-[#121212] overflow-hidden relative">
             {/* Gradient Background */}
-            <div className="absolute top-0 left-0 right-0 h-[340px] bg-gradient-to-b from-[#105e48] to-[#121212] z-0 pointer-events-none" />
+            <div className="absolute top-0 left-0 right-0 h-[200px] md:h-[340px] bg-gradient-to-b from-[#105e48] to-[#121212] z-0 pointer-events-none" />
 
             {/* Main Content Area */}
             <div className="flex-1 flex flex-col z-10 overflow-hidden">
               
               {/* Header Section */}
-              <div className="px-6 pt-6 pb-6 flex items-end gap-6">
+              <div className="px-4 md:px-6 pt-4 md:pt-6 pb-4 md:pb-6 flex flex-col md:flex-row items-start md:items-end gap-4 md:gap-6">
                  <img 
                    src={albumCover} 
                    alt="The Life of a Showgirl" 
-                   className="w-[232px] h-[232px] shadow-[0_4px_60px_rgba(0,0,0,0.5)] object-cover rounded"
+                   className="w-32 h-32 md:w-[232px] md:h-[232px] shadow-[0_4px_60px_rgba(0,0,0,0.5)] object-cover rounded"
                  />
-                 <div className="flex flex-col gap-2">
+                 <div className="flex flex-col gap-1 md:gap-2">
                    <span className="text-xs font-bold uppercase tracking-wide">Álbum</span>
-                   <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-none mt-2 mb-4">The Life of a Showgirl</h1>
-                   <div className="flex items-center gap-2 text-sm font-medium text-white/90">
+                   <h1 className="text-2xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-none mt-1 md:mt-2 mb-2 md:mb-4">The Life of a Showgirl</h1>
+                   <div className="flex flex-wrap items-center gap-1 md:gap-2 text-xs md:text-sm font-medium text-white/90">
                      <div className="w-6 h-6 rounded-full bg-zinc-800 overflow-hidden">
                         {/* Artist Avatar Placeholder */}
                         <div className="w-full h-full bg-yellow-600" />
                      </div>
                      <span className="hover:underline cursor-pointer font-bold" onClick={openSpotifyLink}>Taylor Swift</span>
                      <span className="before:content-['•'] before:mx-1">2025</span>
-                     <span className="before:content-['•'] before:mx-1">12 músicas, 41min 45s</span>
+                     <span className="before:content-['•'] before:mx-1 hidden sm:inline">12 músicas, 41min 45s</span>
                    </div>
                  </div>
               </div>
 
               {/* Action Bar */}
-              <div className="px-6 py-4 flex items-center gap-8 sticky top-0 z-20">
+              <div className="px-4 md:px-6 py-3 md:py-4 flex items-center gap-4 md:gap-8 sticky top-0 z-20">
                 <button 
-                  className="w-14 h-14 rounded-full bg-[#1ed760] text-black flex items-center justify-center hover:scale-105 transition-transform shadow-lg"
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#1ed760] text-black flex items-center justify-center hover:scale-105 transition-transform shadow-lg touch-manipulation"
                   onClick={() => setIsPlaying(!isPlaying)}
                 >
-                  {isPlaying ? <Pause size={24} fill="black" /> : <Play size={24} fill="black" className="ml-1" />}
+                  {isPlaying ? <Pause size={20} className="md:w-6 md:h-6" fill="black" /> : <Play size={20} className="md:w-6 md:h-6 ml-0.5" fill="black" />}
                 </button>
                 
-                <div className="flex items-center gap-6 text-[#b3b3b3]">
-                   <button className="hover:text-white transition-colors"><ShuffleIcon /></button>
-                   <button className="text-[#1ed760]"><CheckCircleIcon /></button>
-                   <button className="hover:text-white transition-colors"><DownloadIcon /></button>
-                   <button className="hover:text-white transition-colors text-2xl pb-2 leading-3">...</button>
+                <div className="flex items-center gap-3 md:gap-6 text-[#b3b3b3]">
+                   <button className="hover:text-white transition-colors touch-manipulation"><ShuffleIcon size={16} /></button>
+                   <button className="text-[#1ed760] touch-manipulation"><CheckCircleIcon size={20} /></button>
+                   <button className="hover:text-white transition-colors hidden sm:inline-block touch-manipulation"><DownloadIcon size={20} /></button>
+                   <button className="hover:text-white transition-colors text-2xl pb-2 leading-3 hidden md:inline-block">...</button>
                 </div>
 
-                <div className="ml-auto flex items-center gap-2 text-[#b3b3b3] text-sm font-medium cursor-pointer hover:text-white">
-                  <span>Lista</span>
-                  <ListIcon />
+                <div className="ml-auto flex items-center gap-2 text-[#b3b3b3] text-xs md:text-sm font-medium cursor-pointer hover:text-white">
+                  <span className="hidden sm:inline">Lista</span>
+                  <ListIcon size={14} className="md:w-4 md:h-4" />
                 </div>
               </div>
 
               {/* Song List Header */}
-              <div className="px-6 sticky top-[88px] z-10">
-                <div className="grid grid-cols-[16px_1fr_auto] gap-4 text-[#b3b3b3] text-sm border-b border-[#ffffff1a] pb-2 px-4">
+              <div className="px-4 md:px-6 sticky top-[72px] md:top-[88px] z-10">
+                <div className="grid grid-cols-[16px_1fr_auto] gap-2 md:gap-4 text-[#b3b3b3] text-xs md:text-sm border-b border-[#ffffff1a] pb-2 px-2 md:px-4">
                   <div className="text-center">#</div>
                   <div>Título</div>
-                  <div className="mr-8"><ClockIcon /></div>
+                  <div className="mr-4 md:mr-8"><ClockIcon size={14} /></div>
                 </div>
               </div>
 
               {/* Songs Scroll Area */}
-              <div className="flex-1 overflow-y-auto px-6 pb-24">
+              <div className="flex-1 overflow-y-auto px-4 md:px-6 pb-28 md:pb-24">
                 <div className="mt-2">
                   {[
                     { title: "The Fate of Ophelia", length: "3:46", explicit: false },
@@ -462,29 +462,29 @@ export default function Home() {
                   ].map((song, i) => (
                     <div 
                       key={i} 
-                      className="group grid grid-cols-[16px_1fr_auto] gap-4 items-center px-4 py-2 rounded-md hover:bg-[#ffffff1a] transition-colors cursor-default"
+                      className="group grid grid-cols-[16px_1fr_auto] gap-2 md:gap-4 items-center px-2 md:px-4 py-2 rounded-md hover:bg-[#ffffff1a] transition-colors cursor-default"
                       onDoubleClick={() => setIsPlaying(true)}
                     >
-                      <div className="text-[#b3b3b3] text-sm text-center w-4 flex justify-center">
+                      <div className="text-[#b3b3b3] text-xs md:text-sm text-center w-4 flex justify-center">
                         <span className="group-hover:hidden font-medium">{i + 1}</span>
-                        <Play size={12} className="hidden group-hover:block fill-white text-white" />
+                        <Play size={12} className="hidden md:group-hover:block fill-white text-white" />
                       </div>
                       
                       <div className="flex flex-col min-w-0">
-                        <span className={`text-base font-medium truncate ${i === 0 || i === 2 ? 'text-[#1ed760]' : 'text-white'}`}>
+                        <span className={`text-sm md:text-base font-medium truncate ${i === 0 || i === 2 ? 'text-[#1ed760]' : 'text-white'}`}>
                           {song.title}
                         </span>
-                        <div className="flex items-center gap-1.5 text-sm text-[#b3b3b3]">
+                        <div className="flex items-center gap-1.5 text-xs md:text-sm text-[#b3b3b3]">
                           {song.explicit && (
                             <span className="bg-[#ffffff99] text-[#121212] text-[9px] px-1 rounded-[2px] leading-3 h-3.5 flex items-center justify-center font-bold" title="Explicit">E</span>
                           )}
-                          <span className="group-hover:text-white cursor-pointer hover:underline">Taylor Swift</span>
+                          <span className="group-hover:text-white cursor-pointer hover:underline truncate">Taylor Swift</span>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-8 text-[#b3b3b3] text-sm font-variant-numeric tabular-nums mr-2">
-                        <div className="w-4 h-4 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                           <button className="hover:text-white"><HeartIcon /></button>
+                      <div className="flex items-center gap-2 md:gap-8 text-[#b3b3b3] text-xs md:text-sm font-variant-numeric tabular-nums mr-1 md:mr-2">
+                        <div className="w-4 h-4 hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100">
+                           <button className="hover:text-white touch-manipulation"><HeartIcon /></button>
                         </div>
                         <span>{song.length}</span>
                       </div>
@@ -495,47 +495,47 @@ export default function Home() {
             </div>
 
             {/* Bottom Player Control Bar (Fixed inside window) */}
-            <div className="h-[90px] bg-[#181818] border-t border-[#282828] flex items-center justify-between px-4 z-50 absolute bottom-0 left-0 right-0">
-                <div className="flex items-center gap-4 w-[30%]">
-                  <img src={albumCover} className="w-14 h-14 rounded shadow-sm object-cover" />
-                  <div className="flex flex-col justify-center">
-                     <span className="text-sm font-medium text-white hover:underline cursor-pointer">The Fate of Ophelia</span>
-                     <span className="text-xs text-[#b3b3b3] hover:text-white hover:underline cursor-pointer">Taylor Swift</span>
+            <div className="h-[100px] md:h-[90px] bg-[#181818] border-t border-[#282828] flex flex-col md:flex-row items-center justify-between px-2 md:px-4 py-2 md:py-0 gap-2 md:gap-0 z-50 absolute bottom-0 left-0 right-0">
+                <div className="flex items-center gap-2 md:gap-4 w-full md:w-[30%]">
+                  <img src={albumCover} className="w-12 h-12 md:w-14 md:h-14 rounded shadow-sm object-cover" />
+                  <div className="flex flex-col justify-center min-w-0 flex-1">
+                     <span className="text-xs md:text-sm font-medium text-white hover:underline cursor-pointer truncate">The Fate of Ophelia</span>
+                     <span className="text-[10px] md:text-xs text-[#b3b3b3] hover:text-white hover:underline cursor-pointer truncate">Taylor Swift</span>
                   </div>
-                  <button className="text-[#1ed760] ml-2"><CheckCircleIcon size={16} /></button>
+                  <button className="text-[#1ed760] ml-2 hidden md:block touch-manipulation"><CheckCircleIcon size={16} /></button>
                 </div>
 
-                <div className="flex flex-col items-center max-w-[40%] w-full gap-2">
-                   <div className="flex items-center gap-6 text-[#b3b3b3]">
-                      <button className="hover:text-white"><ShuffleIcon size={16} /></button>
-                      <button className="hover:text-white"><SkipBack size={20} fill="currentColor" /></button>
+                <div className="flex flex-col items-center w-full md:max-w-[40%] gap-1 md:gap-2">
+                   <div className="flex items-center gap-4 md:gap-6 text-[#b3b3b3]">
+                      <button className="hover:text-white hidden md:block touch-manipulation"><ShuffleIcon size={16} /></button>
+                      <button className="hover:text-white touch-manipulation"><SkipBack size={18} className="md:w-5 md:h-5" fill="currentColor" /></button>
                       <button 
-                        className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-black hover:scale-105 transition-transform"
+                        className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-black hover:scale-105 transition-transform touch-manipulation"
                         onClick={() => setIsPlaying(!isPlaying)}
                       >
-                         {isPlaying ? <Pause size={16} fill="black" /> : <Play size={16} fill="black" className="ml-0.5" />}
+                         {isPlaying ? <Pause size={14} className="md:w-4 md:h-4" fill="black" /> : <Play size={14} className="md:w-4 md:h-4 ml-0.5" fill="black" />}
                       </button>
-                      <button className="hover:text-white"><SkipForward size={20} fill="currentColor" /></button>
-                      <button className="hover:text-white"><RepeatIcon size={16} /></button>
+                      <button className="hover:text-white touch-manipulation"><SkipForward size={18} className="md:w-5 md:h-5" fill="currentColor" /></button>
+                      <button className="hover:text-white hidden md:block touch-manipulation"><RepeatIcon size={16} /></button>
                    </div>
-                   <div className="w-full flex items-center gap-2 text-xs text-[#a7a7a7] font-mono">
+                   <div className="w-full flex items-center gap-2 text-[10px] md:text-xs text-[#a7a7a7] font-mono">
                       <span>0:08</span>
-                      <div className="h-1 flex-1 bg-[#4d4d4d] rounded-full group cursor-pointer">
+                      <div className="h-1 flex-1 bg-[#4d4d4d] rounded-full group cursor-pointer touch-manipulation">
                          <div className="h-full w-[5%] bg-white group-hover:bg-[#1ed760] rounded-full relative">
-                            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 group-hover:opacity-100 shadow" />
+                            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 md:group-hover:opacity-100 shadow" />
                          </div>
                       </div>
                       <span>3:46</span>
                    </div>
                 </div>
 
-                <div className="flex items-center justify-end gap-3 w-[30%] text-[#b3b3b3]">
-                   <button className="hover:text-white"><MicIcon size={16} /></button>
-                   <button className="hover:text-white"><QueueIcon size={16} /></button>
-                   <button className="hover:text-white"><DeviceIcon size={16} /></button>
+                <div className="hidden md:flex items-center justify-end gap-3 w-[30%] text-[#b3b3b3]">
+                   <button className="hover:text-white touch-manipulation"><MicIcon size={16} /></button>
+                   <button className="hover:text-white touch-manipulation"><QueueIcon size={16} /></button>
+                   <button className="hover:text-white touch-manipulation"><DeviceIcon size={16} /></button>
                    <div className="flex items-center gap-2 w-24 group">
                       <Volume2 size={18} />
-                      <div className="h-1 flex-1 bg-[#4d4d4d] rounded-full cursor-pointer">
+                      <div className="h-1 flex-1 bg-[#4d4d4d] rounded-full cursor-pointer touch-manipulation">
                          <div className="h-full w-[80%] bg-white group-hover:bg-[#1ed760] rounded-full relative" />
                       </div>
                    </div>
