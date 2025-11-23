@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { DesktopIcon } from "@/components/os/DesktopIcon";
 import { OSWindow } from "@/components/os/Window";
 import { Taskbar } from "@/components/os/Taskbar";
-import { User, FolderGit2, Music, Github, Terminal, Play, Pause, SkipBack, SkipForward, Volume2, ExternalLink, Star, Mail, Linkedin, Folder } from "lucide-react";
+import { User, FolderGit2, Music, Github, Trash2, Terminal, Play, Pause, SkipBack, SkipForward, Volume2, ExternalLink, Star, Mail, Linkedin, Folder } from "lucide-react";
 import wallpaper from "@assets/generated_images/linux_mint_abstract_wallpaper.png";
 import albumCover from "@assets/The_Life_of_a_Showgirl_1763834019425.png";
 import { portfolioData } from "@/lib/data";
@@ -154,7 +154,7 @@ export default function Home() {
 
   return (
     <div 
-      className="h-screen w-screen overflow-hidden flex flex-col font-sans selection:bg-primary selection:text-white relative"
+      className="h-screen w-screen overflow-hidden md:overflow-hidden flex flex-col font-sans selection:bg-primary selection:text-white relative pb-0 md:pb-0"
       style={{
         backgroundImage: `url(${wallpaper})`,
         backgroundSize: "cover",
@@ -162,7 +162,7 @@ export default function Home() {
       }}
     >
       {/* Desktop Area */}
-      <div className="flex-1 relative p-4 grid grid-flow-col grid-rows-[repeat(auto-fill,100px)] gap-4 content-start justify-start z-0">
+      <div className="flex-1 relative p-4 pb-12 md:pb-4 grid grid-cols-2 sm:grid-cols-3 md:grid-flow-col md:grid-rows-[repeat(auto-fill,100px)] gap-4 content-start justify-start z-0 overflow-auto md:overflow-visible">
         
         <DesktopIcon 
           icon={User} 
@@ -199,7 +199,13 @@ export default function Home() {
           color="text-yellow-500"
         />
 
-        {/* Trash icon removed for mobile/cleaner UI */}
+        <DesktopIcon 
+          icon={Trash2} 
+          label="Trash" 
+          onClick={() => {}} 
+          className="mt-auto row-start-[8]"
+          color="text-zinc-400"
+        />
 
         {/* Windows Layer */}
         {/* About Window */}

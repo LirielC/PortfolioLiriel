@@ -19,7 +19,7 @@ export function Taskbar({ openWindows, activeWindow, onWindowClick, onStartClick
   }, []);
 
   return (
-    <div className="h-10 bg-secondary/95 backdrop-blur-md border-t border-white/5 flex items-center justify-between px-2 select-none z-[100]">
+    <div className="h-10 md:h-10 bg-secondary/95 backdrop-blur-md border-t border-white/5 flex items-center justify-between px-2 select-none z-[100] md:relative fixed bottom-0 left-0 right-0" style={{ paddingBottom: 'max(0px, env(safe-area-inset-bottom))' }}>
       <div className="flex items-center gap-2 h-full relative">
         {/* Start Menu Button */}
         <div className="relative">
